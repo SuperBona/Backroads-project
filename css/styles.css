@@ -1,0 +1,923 @@
+/* 
+=================
+FONTS
+=================
+*/
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
+
+/* 
+=================
+VARIABLES
+=================
+*/
+/* -> shadegeneretor.com
+-> figma.com -- logo 
+favicon.io */
+
+:root {
+  /* dark shades of primary color */
+  --clr-primary-1: hsl(184, 91%, 17%);
+  --clr-primary-2: hsl(185, 84%, 25%);
+  --clr-primary-3: hsl(185, 81%, 29%);
+  --clr-primary-4: hsl(184, 77%, 34%);
+  /* primary main color */
+  --clr-primary-5: hsl(185, 62%, 45%);
+  /* lighter shades of primary color */
+  --clr-primary-6: hsl(185, 57%, 50%);
+  --clr-primary-7: hsl(184, 65%, 59%);
+  --clr-primary-8: hsl(184, 80%, 74%);
+  --clr-primary-9: hsl(185, 94%, 87%);
+  --clr-primary-10: hsl(186, 100%, 94%);
+  /* darkest gray - used for headings */
+  --clr-grey-1: hsl(209, 61%, 16%);
+  --clr-grey-2: hsl(211, 39%, 23%);
+  --clr-grey-3: hsl(209, 34%, 30%);
+  --clr-grey-4: hsl(209, 28%, 39%);
+  /* grey used for paragraphs */
+  --clr-grey-5: hsl(210, 22%, 49%);
+  --clr-grey-6: hsl(209, 23%, 60%);
+  --clr-grey-7: hsl(211, 27%, 70%);
+  --clr-grey-8: hsl(210, 31%, 80%);
+  --clr-grey-9: hsl(212, 33%, 89%);
+  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-white: #fff;
+  /* various */
+  --ff-primary: "Lato", sans-serif;
+  --transition: all 0.3s linear;
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 
+=================
+GLOBAL STYLES
+=================
+*/
+*,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--ff-primary);
+  background: var(--clr-white);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+
+/* seleziona tutte le img tranne quelle che come classe hanno .nav-logo */
+img:not(.nav-logo) {
+  width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+p {
+  margin-bottom: 1.25rem;
+  color: var(--clr-grey-5);
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+
+/* 
+=================
+GLOBAL CLASSES
+=================
+*/
+.btn {
+  text-transform: uppercase;
+  background: var(--clr-primary-5);
+  color: var(--clr-white);
+  padding: 0.375rem 0.75rem;
+  letter-spacing: var(--spacing);
+  display: inline-block;
+  /* font-weight: 700; */
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+  font-size: 0.875rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.btn:hover {
+  color: var(--clr-primary-1);
+  background-color: var(--clr-primary-8);
+}
+.section {
+  padding: 5rem 0;
+}
+.section-title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.section-title h2 {
+  text-transform: uppercase;
+}
+.section-title span {
+  color: var(--clr-primary-5);
+}
+.section-center {
+  width: 90vw;
+  /* visto che uso width posso impostare margin auto per centrare */
+  margin: 0 auto;
+  /* per far in modo che, andando su schermi grandi, la larghezza non sarà mai più grande di questa cifra */
+  max-width: 1170px;
+}
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 95vw;
+  }
+}
+
+/* 
+=================
+HERO SECTION
+=================
+*/
+.hero {
+  /* min-height = 100% (in questo caso) dello schermo verticale disponibile, si adatta a ogni schermo -> 700px di height disponibili? .hero prende 700px in height */
+  min-height: 100vh;
+  background-color: var(--clr-primary-5);
+  /* voglio piazzare hero-banner al centro orizzontalmente e verticalmente, uso flexbox (oppure position) */
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  /* position: relative; */
+}
+
+.hero-banner {
+  text-align: center;
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  color: var(--clr-white);
+  /* padding per schermi piccoli */
+  padding: 0 3rem;
+}
+
+/* sovvrascrivo */
+.hero-banner h1 {
+  text-transform: uppercase;
+}
+
+.hero-banner p {
+  /* non voglio che p si allunghi troppo. aggiungo max-width */
+  max-width: 35rem;
+  /* man mano che lo schermo si ingranisce, implementiamo la max-width, ma ora p non sta più al centro preciso. uso margin
+  ATTENTA ====> se usassi margin: 0 auto; il margin bottom sparisce e p si attacca a btn. non devo renderlo a 0, ma lasciarlo così com'è */
+  margin-left: auto;
+  margin-right: auto;
+  /* il colore di tutti i p è determinato da global styles, ricordo. qui non va bene */
+  color: var(--clr-white);
+  letter-spacing: var(--spacing);
+}
+
+/* il btn ha già la sua classe generica, una base di stile. voglio solo che sia più grande dei futuri btn e un pò diverso */
+.hero-btn {
+  padding: 0.9rem 1.6rem;
+  font-size: 1.25rem;
+  background: var(--clr-white);
+  color: var(--clr-primary-5);
+}
+.hero-btn:hover {
+  background: transparent;
+  color: var(--clr-white);
+  /* anche il border viene sovrascritto, già l'ho inserito negli stili btn globali */
+  border-color: var(--clr-white);
+}
+
+/* imposto stili per schermo più grande -> imposto l'immagine SOLO per schermo più grande
+su cellulare l'immagine rende tutto troppo pesante da vedere */
+@media screen and (min-width: 768px) {
+  .hero {
+    /* linear gradient, url, position/size, repeat */
+    background: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        from(rgb(44, 174, 186, 0.7)),
+        to(rgb(0, 0, 0, 0.7))
+      ),
+      url("../images/main.jpeg") center/cover, no-repeat;
+    background: linear-gradient(rgb(44, 174, 186, 0.7), rgb(0, 0, 0, 0.7)),
+      url("../images/main.jpeg") center/cover, no-repeat;
+  }
+  /* non è necessario avere tutto quel padding per .hero-banner */
+  .hero-banner {
+    padding: 0;
+  }
+  .hero-banner p {
+    max-width: 45rem;
+  }
+}
+
+/* 
+=================
+ABOUT SECTION
+=================
+*/
+/* GLOBAL CLASSES */
+/* column layout con flexbox */
+.about-img,
+.about-info {
+  /* metto del margin per distanziarle su schermo piccolo (stanno una sopra una sotto) */
+  margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 992px) {
+  .about-center {
+    /* layout su due colonne con flexbox (altrimenti float left su elementi figli + clear both su elemento genitore e ricordo le % in base a num elementi) */
+    display: -webkit-box;
+    display: flex;
+    /* anche qui devo stabilire la width della singola colonna, che sarà 50% per due elementi */
+    /* dato che voglio distanziarli il più possibile (passaggio effettuato dopo flex qua sotto) */
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .about-img,
+  .about-info {
+    /* shortcut -> flex: grow shrink flex-basis
+    voglio inoltre aggiungere dello spazio tra i due elementi */
+    -webkit-box-flex: 0;
+    flex: 0 0 calc(50% - 2rem);
+    /* con 50% - 2rem viene sottratto alla width degli elementi un 2rem che sarà lo spazio vuoto che ci serve */
+    /* ora ho il layout su colonne ma NON c'è spazio tra i due elementi -> calc è stato applicato a destra. Per sistemare ritorno nel .about-center
+    bisogna essere sicuri di aver separato gli elementi figli orizzontalmente, cosa che si fa con jusify-content */
+    /* ora devo liberarmi del margin-bottom di .about-info che ho messo per gli schermi piccoli */
+    margin-bottom: 0;
+    /* aggiungo la proprietà per allineare l'elemento figlio stesso (in questo caso, about-info si mette al centro dell'elemento genitore, 
+    e risulta anche centrato verticalmente all'img -> ma succede solo perchè l'ho applicato su entrambi
+    se l'img fosse stata più piccla in height dell'info, img si sarebbe centrata a info verticalmente */
+    align-self: center;
+  }
+}
+
+/* ora devo piazzare lo pseudo elemento ::before a img per creare quella sorta di cornice che sta dietro. dato che gli pseudo-elementi non funzionano con img, in html ho
+dovuto inserire img in un elemento article */
+@media screen and (min-width: 1170px) {
+  .about-img::before {
+    /* ricordo che devo sempre mettere content */
+    content: "";
+    position: absolute;
+    /* avendo usato position absolute, devo mettere la relative */
+    border: 0.5rem solid var(--clr-primary-5);
+    width: 100%;
+    height: 100%;
+    /* l'elemento è più grande dell'article, perchè la proprietà box-sizing non è impostata su border-box per l'elemento ::before, nonostante le proprietà reset scritte in cima
+    ::before e ::after non ereditano box-sizing -> torno in cima al reset * e aggiungo lo pseudo elemento per mettere le proprietà in comune -> risolto, combaciano
+    (posso anche inserirlo qui proprio volendo) */
+    /* box-sizing: border-box; */
+    top: -1.5rem;
+    left: -1.5rem;
+    /* posso usare z-index per posizionare l'elemento sotto l'immagine oppure .about-photo e sfrutto position relative */
+    /* z-index: -1; */
+  }
+  .about-img {
+    position: relative;
+  }
+  .about-photo {
+    position: relative;
+  }
+}
+
+/* 
+=================
+SERVICES SECTION
+=================
+*/
+.services {
+  background: var(--clr-grey-10);
+}
+
+.service {
+  text-align: center;
+  /* distanza tra i singoli service */
+  margin-bottom: 3rem;
+}
+
+.service-icon {
+  background: var(--clr-primary-5);
+  color: var(--clr-primary-1);
+  padding: 0.5rem;
+  /* il display deve essere inline-block altrimenti non rispetta i margini */
+  display: inline-block;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-text {
+  max-width: 20rem;
+  /* ora si è spostato verso sinistra */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* schermi medi -> 2 colonne */
+@media screen and (min-width: 576px) {
+  /* questo è l'elemento genitore degli article */
+  .services-center {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* ora si piazzano su due colonne grazie a wrap e 3 colonne su schermi grandi -> tra poco non lo faranno più per via delle proprietà sotto */
+  }
+  .service {
+    /* no grow e no shrink, aggiungere un pò di space-between */
+    -webkit-box-flex: 0;
+    flex: 0 0 calc(50% - 1rem);
+    /* rimuovo il margin-bottom che ho inserito nella vesione schermo piccolo o lo modifico come voglio */
+    margin-bottom: 1rem;
+  }
+}
+
+/* schermi grandi -> 3 colonne */
+@media screen and (min-width: 992px) {
+  .service {
+    -webkit-box-flex: 0;
+    flex: 0 0 calc(33.333% - 1rem);
+    /* 100% : 3 colonne/elementi = 33.333
+    100% : 2 colonne/elementi = 50%
+    come per float */
+  }
+}
+
+/* voglio mettere icona e paragrafo su stessa riga */
+@media screen and (min-width: 1170px) {
+  .service {
+    display: -webkit-box;
+    display: flex;
+    text-align: left;
+  }
+  /* le icone sono di default "stretched". devo sistemarle e le voglio allineate in top con p */
+  .service-icon {
+    align-self: flex-start;
+  }
+  /* ora distanzio l'icona con la sezione info */
+  .service-info {
+    padding-left: 1rem;
+  }
+  .service-title {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* 
+=================
+FEATURED TOURS SECTION
+=================
+*/
+.tour-card {
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+  background: var(--clr-grey-10);
+  box-shadow: var(--light-shadow);
+  /* distanza tra cards in schermi piccoli */
+  margin-bottom: 2rem;
+}
+
+.tour-card:hover {
+  box-shadow: var(--dark-shadow);
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
+}
+
+/* voglio mettere la data in basso a destra all'estremità dell'img, al suo interno */
+.tour-img-container {
+  position: relative;
+}
+
+.tour-img {
+  height: 15rem;
+  /* per evitare che le img vengano distorte */
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.tour-date {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  /* ora la data sta dentro img ma va ancora posizionata per bene */
+  background: var(--clr-primary-8);
+  /* devo romuovere il margin-bottom perchè ce ne sta di default. c osì facendo, la data sta in posizione volua */
+  margin-bottom: 0;
+  color: var(--clr-primary-1);
+  text-transform: capitalize;
+  padding: 0.25rem 0.5rem;
+}
+
+.tour-info {
+  padding: 1.25rem 1.5rem;
+}
+
+.tour-footer {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.tour-footer p {
+  text-transform: capitalize;
+  line-height: 0;
+  color: var(--clr-primary-5);
+  margin-bottom: 0;
+}
+
+.tour-btn {
+  text-align: center;
+  /* perchè il btn si è piazzato al centro dello schermo con text-align? perchè il bottone NON è impostato su display: block */
+}
+
+.tour-title {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* devo riallineare gli elementi nelle card con quelle accanto. il design alternativo ha creato più spazio sotto il titolo della prima card, facendo scendere il resto */
+.tour-title p,
+.tour-title h4 {
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+
+.tour-title p {
+  color: var(--clr-grey-7);
+}
+
+/* schermi medi-grandi */
+@media screen and (min-width: 768px) {
+  .featured-center {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+  }
+}
+/* calcoliamo la distanza tra le card -> su due colonne */
+.tour-card {
+  -webkit-box-flex: 0;
+  flex: 0 0 calc(50% - 2rem);
+}
+
+/* schermi grandi */
+@media screen and (min-width: 1170px) {
+  .tour-card {
+    -webkit-box-flex: 0;
+    flex: 0 0 calc(33.333% - 2rem);
+  }
+}
+
+/* 
+=================
+CONTACT SECTION
+=================
+*/
+.contact {
+  background: var(--clr-primary-5);
+}
+
+.contact-title {
+  color: var(--clr-white);
+}
+
+.contact-title p {
+  color: var(--clr-primary-8);
+}
+
+.contact-form {
+  display: -webkit-box;
+  display: flex;
+  max-width: 28rem;
+}
+
+.form-control {
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  color: var(--clr-grey-5);
+}
+/* ora l'imput form si allunga per tutto lo schermo (lavoro su schermo piccolo) coprendo la seconda colonna, e alla sua destra c'è il btn attaccato
+ingrandendo lo schermo il form non si allunga ulteriormente perchè c'è max-width */
+/* lavoro su entrambi perchè, essendo affiancati, bisogna dare proprietà comuni */
+.form-control,
+.btn-submit {
+  padding: 0.375rem 0.7rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 300;
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  background: var(--clr-white);
+  border: transparent;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: inherit;
+}
+
+.form-control::-moz-placeholder {
+  color: inherit;
+}
+
+.form-control:-ms-input-placeholder {
+  color: inherit;
+}
+
+.form-control::-ms-input-placeholder {
+  color: inherit;
+}
+
+.form-control::placeholder {
+  color: inherit;
+}
+
+.btn-submit {
+  font-family: var(--ff-primary);
+  margin-left: 0.5rem;
+  background: var(--clr-primary-8);
+  color: var(--clr-primary-1);
+  cursor: pointer;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+  font-weight: 400;
+}
+
+.btn-submit:hover {
+  background: var(--clr-primary-1);
+  color: var(--clr-primary-5);
+}
+
+/* in schermi più grandi deve il form deve piazzarsi accanto al titolo, quindi layout su due colonne */
+@media screen and (min-width: 992px) {
+  .contact-center {
+    display: -webkit-box;
+    display: flex;
+    /* ora il form si "strech" perchè di default tutti gli elementi children (di contact-center) hanno questa proprietà */
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+  }
+  .contact-form {
+    align-self: flex-start;
+    /* voglio che il form si allunghi verso sinistra per coprire lo spazio creatosi al centro.
+    voglio che cresca fin dove può, stesso per shrink, e auto sarà il valore di base */
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+    /* c'è ancora parecchio spazio libero a sinistra del form, questo perchè ci stava max-width per schermi piccoli di 28 rem */
+    max-width: 100%;
+    /* ora voglio mettere un pò di spazio tra i due elementi in colonna */
+    padding-left: 2rem;
+  }
+}
+
+/* 
+=================
+GALLERY SECTION
+=================
+*/
+/* devo piazzare l'icona sulla img al centro */
+.gallery-img-container {
+  position: relative;
+  background: var(--clr-primary-5);
+}
+
+.gallery-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* l'icona non è ancora al centro perchè possiede un suo height e weight */
+  font-size: 2rem;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: var(--clr-white);
+  /* voglio nascondere l'icona e far si che appaia solo quando mi soffermo col cursore, insieme al background */
+  opacity: 0;
+  cursor: pointer;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+}
+
+/* ricordo che con object-fit:cover sistemo le immagini distorte */
+.gallery-img {
+  height: 17rem;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+}
+
+.gallery-img-container:hover .gallery-img {
+  /* ciò che deve succedere a img, perdere opacità per mostrare il background-color e icona */
+  opacity: 0.5;
+}
+.gallery-img-container:hover .gallery-icon {
+  /* ciò che deve succedere a icon, mantenere la sua massima opacità */
+  opacity: 1;
+}
+
+/* ora imposto il layout su colonne senza usare section-center. le righe si allungano per tutta la width */
+@media screen and (min-width: 768px) {
+  .gallery-center {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    /* non serve usare justify content e space-between perchè non mi serve lo spazio tra le immagini */
+  }
+  .gallery-img-container {
+    /* voglio solo che sia al 50%. ora le immagini si piazzano su due colonne e più righe */
+    -webkit-box-flex: 0;
+    flex: 0 0 50%;
+  }
+}
+
+/* biogna ora trasformare il container da 50% (due colonne) a un layout su 4 colonne = 25% */
+@media screen and (min-width: 992px) {
+  .gallery-img-container {
+    -webkit-box-flex: 0;
+    flex: 0 0 25%;
+  }
+}
+
+/* 
+=================
+FOOTER SECTION
+=================
+*/
+.footer {
+  background: var(--clr-grey-1);
+  text-align: center;
+  /* ho già del padding top e bottom dato da section, non devo sovrascriverli */
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.footer-links,
+.footer-icons {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  color: var(--clr-white);
+  text-transform: capitalize;
+  font-size: 1rem;
+  /* ora li distanzio */
+  margin-right: 1rem;
+  letter-spacing: var(--spacing);
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+}
+
+.footer-link:hover {
+  color: var(--clr-primary-5);
+}
+
+.footer-icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+  color: var(--clr-primary-8);
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+}
+
+.footer-icon:hover {
+  color: var(--clr-primary-5);
+}
+
+.copyright {
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  color: var(--clr-white);
+}
+
+/* non serve usare la query perchè anche ingrandendo lo schermo sta bene così */
+/* ora vado ad occuparmi della navbar */
+
+/* 
+=================
+NAVBAR SECTION
+=================
+*/
+/* small screens */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--clr-white);
+  /* la sezione si è presa parte dell'header e in certi momenti viene coperta da altri elementi */
+  box-shadow: var(--dark-shadow);
+  z-index: 2;
+}
+
+/* voglio mostrare le icone solo su schermi grandi, le nascondo */
+.nav-icons {
+  display: none;
+}
+
+.nav-center {
+  /* questi vanno bene per schermi grandi */
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+/* il btn sparirà su schermi grandi */
+.nav-header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  /* il btn non ha l'effetto streched */
+  padding: 1rem;
+}
+
+.nav-toggle {
+  background: transparent;
+  border: transparent;
+  font-size: 1.5rem;
+  color: var(--clr-primary-5);
+  cursor: pointer;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+}
+
+.nav-toggle:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+/* ci si preoccuperà delle icone solo dopo su schermi grandi */
+.nav-link {
+  /* hanno display: inline - voglio che ci sia spanning all across */
+  display: block;
+  padding: 1rem 2rem;
+  text-transform: capitalize;
+  letter-spacing: var(--spacing);
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+  color: var(--clr-grey-1);
+  font-size: 1rem;
+}
+
+.nav-link:hover {
+  color: var(--clr-primary-1);
+  background: var(--clr-primary-8);
+  /* questo determinerà un movimento verso destra */
+  padding-left: 2.25rem;
+}
+
+/* ora devo aggiungere funzionalità al btn-toggle */
+/* con js vado a targettare l'height dei link nella lista navbar - l'id è già stato inserito in html 
+devo andare a vedere il valore height della classe .nav-links ispezionando la pagina sul web, punto sull'elemento e copio il valore height = 280 */
+/* voglio nascondere solo la sezione dei link su schermo piccolo, quando uso il btn -> ecco cosa fare */
+.nav-links {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
+}
+/* quando premo il btn voglio una specifica classe che devo creare. se la inserisco nell'ul come classe, la sezione verrà caricata già aperta al primo caricamento
+quindi non la devo inserire in html */
+.show-links {
+  height: 280px;
+}
+
+/* js era già preimpostato quindi ora posso già cliccare sul btn e funziona. di default, la sezione nav-links è già aperta */
+/* smooth scroll -> grazie a js -> riguardo spiegazione del corso */
+/* su schermo grande la nav non deve avere il btn-toggle ma sta tutto su una singola riga fixed */
+
+@media screen and (min-width: 992px) {
+  /* hide toggle button */
+  .nav-toggle {
+    display: none;
+  }
+  .nav-center {
+    display: -webkit-box;
+    display: flex;
+    /* posso vedere i link se prima apro il menu a comparsa su schermo piccolo e poi lo rendo grande */
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    /* optional */
+    flex-wrap: wrap;
+  }
+
+  /* rimetto una height generica (auto) per i nav-links in quanto sta a 0 di default (si vedono quando uso il btn) */
+  .nav-links {
+    height: auto;
+    display: -webkit-box;
+    display: flex;
+  }
+  /* i link stanno più sulla destra ora, non al centro */
+  .nav-header {
+    padding: 0 0;
+    /* non ci serve il padding */
+  }
+  .nav-link {
+    padding: 0 0;
+    margin-right: 0.7rem;
+  }
+  /* ora i link sono tutti appiccicati e la barra bianca è sottile 
+  rimuovo gli effetti dell'hover */
+  .nav-link:hover {
+    padding: 0;
+    color: var(--clr-primary-5);
+    background: transparent;
+  }
+  /* le icone erano nascoste con display: none */
+  .nav-icons {
+    display: -webkit-box;
+    display: flex;
+  }
+  /* ora i links si sono spostati più al centro facendo spazio sulla destra alle icone */
+  .nav-icon {
+    margin-right: 0.7rem;
+    color: var(--clr-primary-5);
+    font-size: 1.2rem;
+    cursor: pointer;
+    -webkit-transition: var(--transition);
+    transition: var(--transition);
+  }
+  .nav-icon:hover {
+    color: var(--clr-primary-8);
+  }
+  .navbar {
+    padding: 1rem 2rem;
+  }
+  /* ora è semplicemente tutto centrato come voglio */
+}
+
+/* autoprefixer -> per settare i prefissi browser -> basta avere un'estensione per non inserirli manualmente: autoprefixer (v. 3.0.0) 
+cosa fare? -> seleziono tutto il documento css, premo CTRL + P e scrivo: >  poi "autoprefix: run"
+verranno inseriti meccanicamente tutti i prefissi browser */
+/* guardo video Netlify (spiega sia come pubblicare su github + altre funzioni che su netlify) */
